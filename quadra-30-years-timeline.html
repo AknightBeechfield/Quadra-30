@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: clamp(640px, 86vh, 880px);
+  height: auto;
   background: var(--qdt-bg);
   color: var(--qdt-fg);
   font-family: var(--qdt-body);
@@ -125,7 +125,7 @@
 #quadra-timeline .qdt-track::-webkit-scrollbar { height: 4px; }
 #quadra-timeline .qdt-track::-webkit-scrollbar-thumb { background: var(--qdt-fg-faint); }
 #quadra-timeline .qdt-track__inner {
-  display: flex; height: 100%; padding: 40px 56px 60px; gap: 32px;
+  display: flex; align-items: stretch; padding: 40px 56px 44px; gap: 32px;
 }
 #quadra-timeline .qdt-panel {
   flex: 0 0 min(76vw, 880px); scroll-snap-align: center;
@@ -180,8 +180,10 @@
 
 /* ---- controls ---- */
 #quadra-timeline .qdt-controls {
-  position: absolute; right: 28px; bottom: 22px;
-  display: flex; align-items: center; gap: 10px; z-index: 4;
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+  padding: 14px 56px; border-top: 1px solid var(--qdt-rule);
+  background: var(--qdt-bg); z-index: 4;
 }
 #quadra-timeline .qdt-ctrl {
   width: 40px; height: 40px; background: transparent; color: var(--qdt-fg);
@@ -198,9 +200,11 @@
 }
 
 @media (max-width: 900px) {
-  #quadra-timeline .qdt-panel { grid-template-columns: 1fr; }
+  #quadra-timeline .qdt-panel { grid-template-columns: 1fr; flex-basis: min(88vw, 560px); }
   #quadra-timeline .qdt-panel__media { aspect-ratio: 4 / 3; }
-  #quadra-timeline .qdt-spine, #quadra-timeline .qdt-track__inner { padding-left: 24px; padding-right: 24px; }
+  #quadra-timeline .qdt-spine,
+  #quadra-timeline .qdt-track__inner,
+  #quadra-timeline .qdt-controls { padding-left: 24px; padding-right: 24px; }
 }
 
 /* page reset — only affects the standalone test page, not your Drupal theme */
@@ -389,9 +393,26 @@ html,body{margin:0;background:#EFEDE7;}
     setActive(0);
   }
 
+  function postHeight() {
+    if (window.parent === window) return;
+    var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+    window.parent.postMessage({ quadraTimelineHeight: h }, '*');
+  }
+
   function init() {
     var root = document.getElementById('quadra-timeline');
     if (root) build(root);
+
+    // Tell a parent page (e.g. a Drupal iframe embed) our true height so it
+    // can resize the iframe and avoid clipping/scrollbars. No-op standalone.
+    postHeight();
+    window.addEventListener('load', postHeight);
+    window.addEventListener('resize', postHeight);
+    if (window.ResizeObserver && root) {
+      new ResizeObserver(postHeight).observe(document.documentElement);
+    }
+    // Fonts settle slightly after load; re-measure once they do.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(postHeight);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
