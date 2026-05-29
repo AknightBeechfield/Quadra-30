@@ -25,19 +25,19 @@
 #quadra-timeline, #quadra-timeline * { box-sizing: border-box; }
 
 #quadra-timeline {
-  /* palette */
-  --qdt-bg:          #EFEDE7;
-  --qdt-panel:       #FFFFFF;
-  --qdt-fg:          #000000;
-  --qdt-fg-mute:     rgba(0,0,0,0.75);
-  --qdt-fg-soft:     rgba(0,0,0,0.55);
-  --qdt-fg-faint:    rgba(0,0,0,0.30);
-  --qdt-rule:        rgba(0,0,0,0.18);
-  --qdt-rule-soft:   rgba(0,0,0,0.08);
-  --qdt-rule-strong: rgba(0,0,0,0.55);
-  --qdt-accent:      #4C512C;          /* olive — swap here to re-tint */
-  --qdt-caption-bg:  rgba(0,0,0,0.72);
-  --qdt-img-bg:      #D8D2C7;
+  /* palette — dark mode */
+  --qdt-bg:          #000000;
+  --qdt-panel:       #121212;
+  --qdt-fg:          #FFFFFF;
+  --qdt-fg-mute:     rgba(255,255,255,0.78);
+  --qdt-fg-soft:     rgba(255,255,255,0.55);
+  --qdt-fg-faint:    rgba(255,255,255,0.30);
+  --qdt-rule:        rgba(255,255,255,0.18);
+  --qdt-rule-soft:   rgba(255,255,255,0.10);
+  --qdt-rule-strong: rgba(255,255,255,0.60);
+  --qdt-accent:      #B4BE82;          /* lightened olive for contrast on black */
+  --qdt-caption-bg:  rgba(0,0,0,0.78);
+  --qdt-img-bg:      #1C1C1C;
 
   --qdt-display: 'Rift', 'Oswald', 'Bebas Neue', Impact, sans-serif;
   --qdt-body:    'Helvetica Neue LT', 'Helvetica Neue', Arial, sans-serif;
@@ -191,7 +191,7 @@
   display: inline-flex; align-items: center; justify-content: center;
   transition: all 180ms var(--qdt-ease);
 }
-#quadra-timeline .qdt-ctrl:hover:not(:disabled) { background: var(--qdt-fg); color: #fff; border-color: var(--qdt-fg); }
+#quadra-timeline .qdt-ctrl:hover:not(:disabled) { background: var(--qdt-fg); color: var(--qdt-bg); border-color: var(--qdt-fg); }
 #quadra-timeline .qdt-ctrl:disabled { opacity: 0.3; cursor: not-allowed; }
 #quadra-timeline .qdt-controls__hint {
   color: var(--qdt-fg-soft); margin-left: 6px;
@@ -222,8 +222,8 @@ html,body{margin:0;background:#EFEDE7;}
     {
       id: 'foundations', era: '1990s', yearRange: '1990 — 1999', stamp: 'era 01',
       title: 'built for purpose, from day one',
-      image: 'https://mediahub.beechfieldbrands.com/asset/503b9d46-a132-44ca-94ea-b4587490ebd4/Product-medium/quadra_qd80_black.jpg',
-      productCode: 'QD80', productName: 'Jumbo Sports Holdall',
+      image: 'https://mediahub.beechfieldbrands.com/asset/231856be-8add-4ae1-a0db-91294331aede/Product-medium/quadra_qd45_black_lifestyle_3412_cropped.jpg',
+      productCode: 'QD45', productName: 'Advertising Holdall',
       points: [
         'Quadra launches with hard-working bags built around everyday durability and function',
         'Sports holdalls, record bags and travel formats set the focus: useful storage, robust fabrics, dependable construction',
@@ -234,8 +234,8 @@ html,body{margin:0;background:#EFEDE7;}
     {
       id: 'work-travel-mobile', era: 'Early 2000s', yearRange: '2000 — 2005', stamp: 'era 02',
       title: 'work, travel and the move to mobile',
-      image: 'https://mediahub.beechfieldbrands.com/asset/1c347b58-3463-4134-bffd-d34a586263cf/Product-medium/quadra_qd968_black_dark-graphite.jpg',
-      productCode: 'QD968', productName: 'Tungsten Laptop Backpack',
+      image: 'https://mediahub.beechfieldbrands.com/asset/5c37ab11-590f-4957-824f-521826e01513/Product-medium/quadra_qd57_french-navy_lifestyle_4496_cropped.jpg',
+      productCode: 'QD57', productName: 'Pursuit Backpack',
       points: [
         'Bag design begins to reflect a working day spent across desks, transit and trips away',
         'Structured silhouettes, wider compartments and smarter internal layouts carry documents, early laptops and travel essentials in one bag',
@@ -246,8 +246,8 @@ html,body{margin:0;background:#EFEDE7;}
     {
       id: 'connected-carry', era: 'Mid 2000s — Early 2010s', yearRange: '2006 — 2012', stamp: 'era 03',
       title: 'performance and connected carry',
-      image: 'https://mediahub.beechfieldbrands.com/asset/383a7b57-7add-4108-b3d0-8765036bb698/Product-medium/quadra_qd655_olive-green.jpg',
-      productCode: 'QD655', productName: 'Vintage Canvas Satchel',
+      image: 'https://mediahub.beechfieldbrands.com/asset/c232b353-2d07-448d-af73-03ddbe06a67a/Product-medium/quadra_qs255_bright-royal_black_white_media-pocket.jpg',
+      productCode: 'QS255', productName: 'Pro Team Backpack',
       points: [
         'Backpacks and travel bags become more technical for commuters, travellers and active users',
         'Padded device compartments, media pockets and headphone ports support always-on routines',
