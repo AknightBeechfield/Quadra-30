@@ -16,6 +16,19 @@ for Quadra®, built as a single HTML file ready to embed in Drupal (or any CMS).
   controls, and click-to-focus on panels or year ticks.
 - Vanilla JavaScript, zero dependencies — drops straight into a page.
 
+## Live preview (GitHub Pages)
+
+A workflow (`.github/workflows/pages.yml`) publishes the timeline to GitHub
+Pages on every push to `main`. Once it runs, the site is available at:
+
+```
+https://aknightbeechfield.github.io/Quadra-30/
+```
+
+The root `index.html` redirects to `quadra-30-years-timeline.html`. If Pages
+isn't enabled automatically, set **Settings → Pages → Build and deployment →
+Source** to **GitHub Actions**.
+
 ## Embedding in Drupal
 
 The timeline lives entirely inside the `#quadra-timeline` markup plus the
